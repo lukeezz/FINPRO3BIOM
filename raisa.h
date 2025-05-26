@@ -5,6 +5,7 @@
 
 void funcRaisa(){
     printf("Hello ini Raisa");
+    printf("testing");
 }
 
 #endif
