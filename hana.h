@@ -5,6 +5,7 @@
 
 void funcHana(){
     printf("Hello ini Hana");
+    printf("update dari hana");
 }
 
 #endif
