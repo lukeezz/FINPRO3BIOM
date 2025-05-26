@@ -1,3 +1,7 @@
+#include "raisa.h"
+#include "hana.h"
+#include "lukas.h"
+
 #include <stdio.h>
 
 int main(){
