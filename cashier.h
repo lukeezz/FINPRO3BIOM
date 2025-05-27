@@ -1,5 +1,5 @@
-#ifndef LUKAS_H
-#define LUKAS_H
+#ifndef CASHIER_H
+#define CASHIER_H
 
 #include <stdio.h>
 
