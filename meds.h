@@ -30,7 +30,7 @@ void displayMeds() {
         }
         fclose(file);
     }
-    printf("Press Enter..."); getchar(); clearScreen();
+    printf("Press Enter..."); getchar();
 }
 
 void addMed() {
