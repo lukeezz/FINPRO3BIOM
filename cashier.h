@@ -1,10 +1,6 @@
 #ifndef CASHIER_H
 #define CASHIER_H
 
-#include <stdio.h>
-
-void funcLukas(){
-    printf("Hello ini Lukas");
-}
+float calculateTotal(const char codes[][10], const int quantities[], int itemCount, int withDelivery);
 
 #endif
