@@ -11,7 +11,6 @@ void cashierMenu();
 void managerMenu();
 void analyticsMenu();
 
-// Tambahan: Fungsi Analytics
 void analyticsMenu() {
     Med meds[100];
     int n = loadMeds(meds);
@@ -53,7 +52,7 @@ void cashierMenu() {
             char code[10];
             float total = 0;
 
-            displayMeds(); // Tampilkan daftar obat dulu
+            displayMeds(); 
             while (1) {
                 printf("Enter med code (or 'done'): "); gets(code);
                 if (strcmp(code, "done") == 0) break;
@@ -92,7 +91,7 @@ void managerMenu() {
             case 1: addMed(); break;
             case 2: displayMeds(); break;
             case 3:
-                displayMeds(); // Tampilkan meds dulu
+                displayMeds(); 
                 updateMed();
                 break;
             case 4: deleteMed(); break;
