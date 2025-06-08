@@ -33,9 +33,29 @@ void displayMeds() {
     printf("Press Enter..."); getchar();
 }
 
+int isMedNameExist(const char* name, Med meds[], int n) {
+    for (int i = 0; i < n; i++) {
+        if (strcmp(meds[i].name, name) == 0) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
 void addMed() {
     Med m;
-    printf("Name: "); gets(m.name);
+    Med meds[100];
+    int n = loadMeds(meds);
+
+    printf("Name: ");
+    gets(m.name);
+
+    if (isMedNameExist(m.name, meds, n)) {
+        printf("Error: Med with the same name already exists!\n");
+        printf("Press Enter..."); getchar(); clearScreen();
+        return;
+    }
+
     printf("Code: "); gets(m.code);
     printf("Stock: "); scanf("%d", &m.stock);
     printf("Price: "); scanf("%f", &m.price);
@@ -43,6 +63,7 @@ void addMed() {
     storeMed(m);
     printf("Added. Press Enter..."); getchar(); clearScreen();
 }
+
 
 int loadMeds(Med meds[]) {
     FILE *file = fopen("meds.txt", "rb");
