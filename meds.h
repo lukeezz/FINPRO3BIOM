@@ -64,7 +64,6 @@ void updateMed() {
     Med meds[100];
     int n = loadMeds(meds);
     char code[10];
-    displayMeds();
     printf("Enter med code to update: "); gets(code);
     for (int i = 0; i < n; i++) {
         if (strcmp(meds[i].code, code) == 0) {
