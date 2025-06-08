@@ -49,23 +49,31 @@ void addMed() {
     Med meds[100];
     int n = loadMeds(meds);
 
-    printf("Name: ");
-    gets(m.name);
+    while (1) {
+        printf("Name: ");
+        gets(m.name);
 
-    if (isMedNameExist(m.name, meds, n)) {
-        printf("Error: Med with the same name already exists!\n");
-        printf("Press Enter..."); getchar(); clearScreen();
-        return;
+        if (isMedNameExist(m.name, meds, n)) {
+            printf("Error: Med with the same name already exists!\n");
+            printf("Do you still want to add meds? (Yes/No): ");
+            char choice = getchar(); getchar(); 
+            if (choice == 'N' || choice == 'n') {
+                printf("Cancelled. Press Enter..."); getchar(); clearScreen();
+                return;
+            }
+            clearScreen();
+        } else {
+            break; 
+        }
     }
 
     printf("Code: "); gets(m.code);
     printf("Stock: "); scanf("%d", &m.stock);
     printf("Price: "); scanf("%f", &m.price);
-    getchar();
+    getchar(); 
     storeMed(m);
     printf("Added. Press Enter..."); getchar(); clearScreen();
 }
-
 
 int loadMeds(Med meds[]) {
     FILE *file = fopen("meds.txt", "rb");
