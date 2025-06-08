@@ -60,7 +60,7 @@ void registerUser() {
         printf("New password: "); fgets(tempPassword, sizeof(tempPassword), stdin);
         tempPassword[strcspn(tempPassword, "\n")] = '\0';
         if (!isValidPassword(tempPassword)) {
-            printf("Password must be at least 8 characters long, contain one uppercase letter, and one digit.\n");
+            printf("Password must be at least 8 characters long, contain one uppercase letter, and one number.\n");
         }
     } while (!isValidPassword(tempPassword));
     
