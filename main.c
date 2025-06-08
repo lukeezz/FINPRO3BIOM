@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <windows.h>
 #include <stdlib.h>
 #include <string.h>
 #include "auth.h"
@@ -6,7 +7,7 @@
 #include "utils.h"
 #include "menu.h"
 
-// Fungsi untuk menampilkan tampilan awal
+
 void showWelcomeScreen() {
     printf("===========================================\n");
     printf("        🌿 Welcome to PharmaSys! 🌿\n");
@@ -15,12 +16,13 @@ void showWelcomeScreen() {
     printf(" purchasing medications with ease and safety.\n\n");
     printf(" 💊 Stay healthy. Stay in control. 💊\n\n");
     printf("        ➤ Press Enter to continue...\n");
-    getchar(); // Tunggu user tekan Enter
+    getchar(); 
 }
 
 int main() {
+    SetConsoleOutputCP(65001);
+    showWelcomeScreen(); 
     int status;
-    showWelcomeScreen(); // Tampilkan welcome screen
 
     while (1) {
         status = loginMenu();
