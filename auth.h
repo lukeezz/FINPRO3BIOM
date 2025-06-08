@@ -40,7 +40,7 @@ int resetPassword(const char *username) {
                 fgets(newPassword, sizeof(newPassword), stdin);
                 newPassword[strcspn(newPassword, "\n")] = '\0';
                 if (!isValidPassword(newPassword)) {
-                    printf("Password must be at least 8 characters long, contain one uppercase letter, and one digit.\n");
+                    printf("Password must be at least 8 characters long, contain one uppercase letter, and one number.\n");
                 }
             } while (!isValidPassword(newPassword));
             strcpy(u.password, newPassword);
