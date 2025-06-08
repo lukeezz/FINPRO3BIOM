@@ -12,6 +12,8 @@ typedef struct {
     float price;
 } Med;
 
+int loadMeds(Med meds[]);
+
 void storeMed(Med m) {
     FILE *file = fopen("meds.txt", "ab");
     fwrite(&m, sizeof(Med), 1, file);
