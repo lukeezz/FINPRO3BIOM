@@ -51,11 +51,12 @@ void addMed() {
 
     while (1) {
         printf("Name: ");
-        gets(m.name);
+        fgets(m.name, sizeof(m.name), stdin);
+        m.name[strcspn(m.name, "\n")] = '\0';  
 
         if (isMedNameExist(m.name, meds, n)) {
             printf("Error: Med with the same name already exists!\n");
-            printf("Do you still want to add meds? (Yes/No): ");
+            printf("Do you still want to add meds? (Y/N): ");
             char choice = getchar(); getchar(); 
             if (choice == 'N' || choice == 'n') {
                 printf("Cancelled. Press Enter..."); getchar(); clearScreen();
@@ -67,13 +68,17 @@ void addMed() {
         }
     }
 
-    printf("Code: "); gets(m.code);
+    printf("Code: ");
+    fgets(m.code, sizeof(m.code), stdin);
+    m.code[strcspn(m.code, "\n")] = '\0'; 
+
     printf("Stock: "); scanf("%d", &m.stock);
     printf("Price: "); scanf("%f", &m.price);
     getchar(); 
     storeMed(m);
     printf("Added. Press Enter..."); getchar(); clearScreen();
 }
+
 
 int loadMeds(Med meds[]) {
     FILE *file = fopen("meds.txt", "rb");
@@ -95,12 +100,24 @@ void updateMed() {
     Med meds[100];
     int n = loadMeds(meds);
     char code[10];
-    printf("Enter med code to update: "); gets(code);
+
+    printf("Enter med code to update: ");
+    fgets(code, sizeof(code), stdin);
+    code[strcspn(code, "\n")] = '\0';  // hapus newline
+
     for (int i = 0; i < n; i++) {
         if (strcmp(meds[i].code, code) == 0) {
-            printf("New name: "); gets(meds[i].name);
-            printf("New stock: "); scanf("%d", &meds[i].stock);
-            printf("New price: "); scanf("%f", &meds[i].price); getchar();
+            printf("New name: ");
+            fgets(meds[i].name, sizeof(meds[i].name), stdin);
+            meds[i].name[strcspn(meds[i].name, "\n")] = '\0';
+
+            printf("New stock: ");
+            scanf("%d", &meds[i].stock);
+
+            printf("New price: ");
+            scanf("%f", &meds[i].price);
+
+            getchar(); // membersihkan newline setelah scanf
             break;
         }
     }
@@ -112,8 +129,12 @@ void deleteMed() {
     Med meds[100];
     int n = loadMeds(meds);
     char code[10];
+
     displayMeds();
-    printf("Enter med code to delete: "); gets(code);
+    printf("Enter med code to delete: ");
+    fgets(code, sizeof(code), stdin);
+    code[strcspn(code, "\n")] = '\0'; // hapus newline
+
     for (int i = 0; i < n; i++) {
         if (strcmp(meds[i].code, code) == 0) {
             for (int j = i; j < n - 1; j++) meds[j] = meds[j + 1];
@@ -124,6 +145,5 @@ void deleteMed() {
     saveAllMeds(meds, n);
     printf("Deleted. Press Enter..."); getchar(); clearScreen();
 }
-
 
 #endif
